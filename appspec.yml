@@ -1,0 +1,37 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/console
+permissions:
+  - object: /var/www/html/se
+    pattern: "*"
+    except: [deployment]
+    owner: apache
+    group: apache
+    mode: "755"
+    type:
+      - directory
+  - object: /var/www/html/console
+    pattern: "*"
+    except: [deployment]
+    owner: apache
+    group: apache
+    mode: "644"
+    type:
+      - file
+
+hooks:
+  BeforeInstall:
+    - location: deployment/before_deployment.sh
+  ApplicationStop:
+    - location: deployment/stop_webserver.sh
+    - location: deployment/deregister_from_elb.sh
+  AfterInstall:
+    - location: deployment/fetch_secrets.sh
+    - location: deployment/after_deployment.sh
+  ApplicationStart:
+    - location: deployment/start_webserver.sh
+    - location: deployment/register_with_elb.sh
+ValidateService:
+    - location: deployment/validate_app.sh
