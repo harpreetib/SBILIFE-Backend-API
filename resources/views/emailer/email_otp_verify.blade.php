@@ -25,7 +25,7 @@
                                                 
 
                                                 <td align="left" valign="top">
-                                                    <img src="https://lifeverse.megaspace.ai/assets/images/SBI_Logo.png"
+                                                    <img src="https://lifeverse.sbilife.co.in/assets/images/SBI_Logo.png"
                                                         style="max-width:60%; display:block; padding:10px 0 0 0;" />
                                                 </td>
                                             </tr>
